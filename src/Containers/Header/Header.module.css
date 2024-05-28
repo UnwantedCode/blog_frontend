@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  background-color: #363636;
+  margin-bottom: 0;
+  font-weight: 500;
+  width: 100%;
+  height: 70px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+.header .headerContainer {
+  display: flex;
+  width: 1170px;
+  justify-content: space-between;
+}
+.header .headerContainer .headerLeft {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+.header .headerContainer .headerLeft .homeLink {
+  padding: 15px;
+  margin: 10px 0 10px 0;
+  font-size: 20px;
+  color: #dadada;
+}
+.header .headerContainer .headerRight {
+  display: flex;
+  align-items: flex-start;
+}
+
+/*# sourceMappingURL=Header.module.css.map */

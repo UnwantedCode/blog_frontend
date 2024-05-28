@@ -1,0 +1,74 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    background-color: white;
+    color: #444;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+* {
+    outline: 0;
+    box-sizing: border-box;
+    line-height: 1.2;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+*:hover {
+    outline: 0;
+}
+
+*:focus {
+    outline: 0;
+}
+
+a {
+    outline: 0;
+    text-decoration: unset;
+}
+
+a:hover,
+a:active,
+a:focus {
+    outline: 0;
+}
+
+input {
+    outline: 0;
+}
+
+input:hover,
+input:active,
+input:focus {
+    outline: 0;
+}
+
+button {
+    outline: 0;
+}
+
+button:hover,
+button:active,
+button:focus {
+    outline: 0;
+}
+
+
