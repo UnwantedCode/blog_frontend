@@ -3,6 +3,7 @@ import {HelmetProvider} from "react-helmet-async";
 import Header from "./Containers/Header/Header.jsx";
 import MainPage from "./Containers/MainPage/MainPage.jsx";
 import "./assets/styles/index.css";
+import Footer from "./Containers/Footer/Footer.jsx";
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
 
               <Header />
           <MainPage />
+          <Footer />
 
       </HelmetProvider>
   )
