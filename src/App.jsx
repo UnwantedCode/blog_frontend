@@ -10,7 +10,7 @@ function App() {
   return (
       <HelmetProvider>
 
-              <Header />
+          <Header />
           <MainPage />
           <Footer />
 

@@ -24,8 +24,26 @@ function MainPage() {
                             Szukaj
                         </div>
                         <div className={styles.search}>
-                            <input type="text" placeholder="Szukaj"/>
-                            <button>Szukaj</button>
+                            <input type="text" placeholder=""/>
+                            <button className={styles.button}>SZUKAJ</button>
+                        </div>
+                    </div>
+                    <div className={styles.categoryContainer}>
+                        <div className={styles.title}>
+                            Kategorie
+                        </div>
+                        <div className={styles.categories}>
+                            <a className={styles.link} href="/some-path">
+                                <div className={styles.category}>Kategoria 1</div>
+                            </a>                            <a className={styles.link} href="/some-path">
+                                <div className={styles.category}>Kategoria 1</div>
+                            </a>                            <a className={styles.link} href="/some-path">
+                                <div className={styles.category}>Kategoria 1</div>
+                            </a>                            <a className={styles.link} href="/some-path">
+                                <div className={styles.category}>Kategoria 1</div>
+                            </a>
+
+
                         </div>
                     </div>
                 </div>

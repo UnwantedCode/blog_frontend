@@ -19,8 +19,8 @@
   background-size: cover;
 }
 .item .content {
-  border-top: 1px solid #dadada;
   padding: 45px 50px;
+  border: 1px solid #dadada;
 }
 .item .content .link {
   width: 100%;

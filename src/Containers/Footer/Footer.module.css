@@ -1,98 +1,88 @@
 /* src/components/Footer.module.css */
-.footer {
+.footerContainer {
   background-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footerContainer .footer {
   color: #fff;
   font-family: Arial, sans-serif;
+  width: 1170px;
 }
-
-.mainFooter {
+.footerContainer .footer .mainFooter {
   display: flex;
-  justify-content: space-around;
   padding: 20px;
 }
-
-.footerSection {
+.footerContainer .footer .mainFooter .footerSection {
   flex: 1;
   margin: 0 20px;
 }
-
-.heading {
+.footerContainer .footer .mainFooter .footerSection .heading {
   margin-bottom: 10px;
   border-bottom: 1px solid #444;
   padding-bottom: 5px;
 }
-
-.list {
+.footerContainer .footer .mainFooter .footerSection .list {
   list-style: none;
   padding: 0;
 }
-
-.listItem {
+.footerContainer .footer .mainFooter .footerSection .list .listItem {
   margin-bottom: 10px;
 }
-
-.image {
+.footerContainer .footer .mainFooter .footerSection .list .listItem .image {
   width: 50px;
   height: 50px;
   margin-right: 10px;
   vertical-align: middle;
 }
-
-.link {
+.footerContainer .footer .mainFooter .footerSection .list .listItem .link {
   color: #fff;
   text-decoration: none;
 }
-
-.link:hover {
+.footerContainer .footer .mainFooter .footerSection .list .listItem .link:hover {
   text-decoration: underline;
 }
-
-.date {
+.footerContainer .footer .mainFooter .footerSection .list .listItem .date {
   display: block;
   font-size: 0.9em;
   color: #bbb;
 }
-
-p {
+.footerContainer .footer .mainFooter .footerSection p {
   margin: 10px 0;
 }
-
-.bottomFooter {
+.footerContainer .bottomFooter {
   background-color: #1F1F1F;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
   border-top: 1px solid #444;
+  width: 100%;
+  padding: 10px 21%;
 }
-
-.socialLinks a {
+.footerContainer .bottomFooter .socialLinks a {
   margin: 0 5px;
   color: #fff;
   text-decoration: none;
   font-size: 20px;
 }
-
-.footerNav a {
+.footerContainer .bottomFooter .footerNav a {
   margin: 0 10px;
   color: #fff;
   text-decoration: none;
 }
-
-.footerNav a:hover {
+.footerContainer .bottomFooter .footerNav a:hover {
   text-decoration: underline;
 }
-
-.footerCredits {
+.footerContainer .bottomFooter .footerCredits {
   font-size: 0.9em;
 }
-
-.footerCredits a {
+.footerContainer .bottomFooter .footerCredits a {
   color: #1e90ff;
   text-decoration: none;
 }
-
-.footerCredits a:hover {
+.footerContainer .bottomFooter .footerCredits a:hover {
   text-decoration: underline;
 }
 
