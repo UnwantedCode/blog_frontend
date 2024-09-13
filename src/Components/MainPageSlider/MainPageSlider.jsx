@@ -13,6 +13,7 @@ function MainPageSlider() {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
+        // centerMode: true,
     };
 
     return (

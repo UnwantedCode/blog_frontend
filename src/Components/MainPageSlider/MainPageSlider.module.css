@@ -3,17 +3,16 @@
   width: 100%;
   margin: 0 auto;
 }
-
-.slide {
+.sliderContainer .slide {
   position: relative;
 }
-
-.slide img {
-  width: 100%;
-  height: auto;
+.sliderContainer .slide img {
+  height: 400px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.caption {
+.sliderContainer .slide .caption {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -22,12 +21,10 @@
   padding: 10px;
   border-radius: 5px;
 }
-
-.caption h2 {
+.sliderContainer .slide .caption h2 {
   margin: 0 0 10px;
 }
-
-.caption p {
+.sliderContainer .slide .caption p {
   margin: 0;
 }
 
