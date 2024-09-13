@@ -9,3 +9,4 @@ Currently, two official plugins are available:
   https://btemplates.com/2016/blogger-template-greatmag/
   https://btemplates.com/2016/blogger-template-solon/
   https://colorlib.com/wp/themes/sparkling/
+- https://wp1.adamus1234.smallhost.pl/
