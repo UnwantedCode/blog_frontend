@@ -3,43 +3,40 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faComment,faCalendar} from "@fortawesome/free-solid-svg-icons";
 import RightPanel from "../RightPanel/RightPanel.jsx";
 //show big image and some text under it
-function ArticleItem() {
+function ArticleItem({item}) {
 
+    // Funkcja formatująca datę
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const dateObj = new Date(dateString);
+        return new Intl.DateTimeFormat('pl-PL', options).format(dateObj); // Formatuj datę na podstawie lokalizacji polskiej
+    };
 
     return (
         <>
-
-
             <div className={styles.item}>
-
-
                 <div className={styles.image}
-                     style={{backgroundImage: `url("https://www.google.com/search/static/gs/animal/cover_images/m01yrx_cover.png")`}}/>
+                     style={{backgroundImage: `url("${item.image}")`}}/>
                 <div className={styles.content}>
                     <a href="/some-path" className={styles.link}>
                         <div className={styles.title}>
-                            <h1>ARTYKUŁ 1</h1>
+                            <h1>{item.title}</h1>
                         </div>
                     </a>
-
                     <div className={styles.info}>
                         <FontAwesomeIcon icon={faCalendar} className={styles.icon}/>
                         <div className={styles.date}>
-                            2021-03-01
+                            {formatDate(item.published_at)}
                         </div>
                         <FontAwesomeIcon icon={faComment} className={styles.icon}/>
                         <div className={styles.comments}>
-                            3 comments
+                            {item.comments_count} comments
                         </div>
                     </div>
                     <div className={styles.text}>
-                        <p>Some description for the first article.</p>
+                        <p>{item.summary}</p>
                     </div>
-
-
                 </div>
-
-
             </div>
         </>
     )

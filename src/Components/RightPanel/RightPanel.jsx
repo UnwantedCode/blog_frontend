@@ -1,7 +1,39 @@
 import styles from './RightPanel.module.css';
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 //show big image and some text under it
 function RightPanel() {
+
+    const [categories, setCategories] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+    useEffect(() => {
+        fetch('http://localhost:8000/api/categories/')
+            .then(response => response.json())
+            .then(data => {
+                setCategories(data);
+            })
+            .catch(error => {
+                console.error('Error fetching articles:', error);
+            });
+    }, []);
+    const handleSearch = () => {
+        if (searchQuery.trim()) {
+            navigate(`/szukaj?q=${encodeURIComponent(searchQuery)}`);
+        }
+    };
+
+    const handleInputChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            handleSearch();
+        }
+    };
+
     return (
         <>
                 <div className={styles.mainRight}>
@@ -10,8 +42,14 @@ function RightPanel() {
                             Szukaj
                         </div>
                         <div className={styles.search}>
-                            <input type="text" placeholder=""/>
-                            <button className={styles.button}>SZUKAJ</button>
+                            <input type="text"
+                                   placeholder=""
+
+                                   value={searchQuery}
+                                   onChange={handleInputChange}
+                                   onKeyPress={handleKeyPress}
+                            />
+                            <button className={styles.button} onClick={handleSearch}>SZUKAJ</button>
                         </div>
                     </div>
                     <div className={styles.categoryContainer}>
@@ -19,20 +57,27 @@ function RightPanel() {
                             Kategorie
                         </div>
                         <div className={styles.categories}>
-                            <a className={styles.link} href="/some-path">
-                                <div className={styles.category}>Kategoria 1</div>
-                            </a>                            <a className={styles.link} href="/some-path">
-                                <div className={styles.category}>Kategoria 1</div>
-                            </a>                            <a className={styles.link} href="/some-path">
-                                <div className={styles.category}>Kategoria 1</div>
-                            </a>                            <a className={styles.link} href="/some-path">
-                                <div className={styles.category}>Kategoria 1</div>
-                            </a>
+                            {categories.map(category => (
+                                <a className={styles.link} href="/some-path">
+                                    <div className={styles.category} key={category.id}>
+                                        {category.title}
+                                    </div>
+                                </a>
+                            ))}
+                                {/*    <a className={styles.link} href="/some-path">*/}
+                                {/*        <div className={styles.category}>Kategoria 1</div>*/}
+                                {/*    </a> <a className={styles.link} href="/some-path">*/}
+                                {/*    <div className={styles.category}>Kategoria 1</div>*/}
+                                {/*</a> <a className={styles.link} href="/some-path">*/}
+                                {/*    <div className={styles.category}>Kategoria 1</div>*/}
+                                {/*</a> <a className={styles.link} href="/some-path">*/}
+                                {/*    <div className={styles.category}>Kategoria 1</div>*/}
+                                {/*</a>*/}
 
 
-                        </div>
-                    </div>
-                </div>
+                                </div>
+                                </div>
+                                </div>
 
 
         </>
