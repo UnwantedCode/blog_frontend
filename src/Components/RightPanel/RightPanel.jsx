@@ -20,7 +20,7 @@ function RightPanel() {
     }, []);
     const handleSearch = () => {
         if (searchQuery.trim()) {
-            navigate(`/szukaj?q=${encodeURIComponent(searchQuery)}`);
+            navigate(`/?q=${encodeURIComponent(searchQuery)}`);navigate(0);
         }
     };
 
@@ -58,7 +58,7 @@ function RightPanel() {
                         </div>
                         <div className={styles.categories}>
                             {categories.map(category => (
-                                <a className={styles.link} href="/some-path">
+                                <a key={category.id} className={styles.link} href={`/?category=${category.id}`}>
                                     <div className={styles.category} key={category.id}>
                                         {category.title}
                                     </div>

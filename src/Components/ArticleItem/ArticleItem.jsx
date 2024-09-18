@@ -18,7 +18,7 @@ function ArticleItem({item}) {
                 <div className={styles.image}
                      style={{backgroundImage: `url("${item.image}")`}}/>
                 <div className={styles.content}>
-                    <a href="/some-path" className={styles.link}>
+                    <a href={`/artykul/${item.id}`} className={styles.link}>
                         <div className={styles.title}>
                             <h1>{item.title}</h1>
                         </div>
@@ -30,11 +30,11 @@ function ArticleItem({item}) {
                         </div>
                         <FontAwesomeIcon icon={faComment} className={styles.icon}/>
                         <div className={styles.comments}>
-                            {item.comments_count} comments
+                            {item.comments_count} komentarze
                         </div>
                     </div>
                     <div className={styles.text}>
-                        <p>{item.summary}</p>
+                        <p dangerouslySetInnerHTML={{ __html: item.summary }}></p>
                     </div>
                 </div>
             </div>

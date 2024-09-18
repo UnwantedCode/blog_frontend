@@ -1,9 +1,37 @@
 //footer
 
 import styles from './Footer.module.css'
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 function Footer() {
+    const [categories, setCategories] = useState([]);
+    const [articles, setArticles] = useState([]);
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const dateObj = new Date(dateString);
+        return new Intl.DateTimeFormat('pl-PL', options).format(dateObj); // Formatuj datę na podstawie lokalizacji polskiej
+    };
+    useEffect(() => {
+        fetch('http://localhost:8000/api/categories/')
+            .then(response => response.json())
+            .then(data => {
+                setCategories(data);
+            })
+            .catch(error => {
+                console.error('Error fetching articles:', error);
+            });
 
+        fetch('http://localhost:8000/api/posts/?page_size=4&sort_by_comments=desc')
+            .then(response => response.json())
+            .then(data => {
+                setArticles(data.results);
+            })
+            .catch(error => {
+                console.error('Error fetching articles:', error);
+            });
+
+    }, []);
     return (
         <div className={styles.footerContainer}>
             <footer className={styles.footer}>
@@ -11,43 +39,23 @@ function Footer() {
                     <div className={styles.footerSection}>
                         <h4 className={styles.heading}>Popular Posts</h4>
                         <ul className={styles.list}>
-                            <li className={styles.listItem}>
-                                <img src="link-do-obrazka" alt="Post 1" className={styles.image}/>
-                                <a href="#" className={styles.link}>How to Use WordPress Pingbacks And Trackbacks</a>
-                                <span className={styles.date}>April 7, 2015</span>
-                            </li>
-                            <li className={styles.listItem}>
-                                <img src="link-do-obrazka" alt="Post 2" className={styles.image}/>
-                                <a href="#" className={styles.link}>This is how comments will be displayed on Sparkling
-                                    WP
-                                    Theme</a>
-                                <span className={styles.date}>January 3, 2015</span>
-                            </li>
-                            <li className={styles.listItem}>
-                                <img src="link-do-obrazka" alt="Post 3" className={styles.image}/>
-                                <a href="#" className={styles.link}>We Created This Awesome Free WordPress Theme To Set
-                                    New
-                                    Industry Standard</a>
-                                <span className={styles.date}>April 6, 2015</span>
-                            </li>
-                            <li className={styles.listItem}>
-                                <img src="link-do-obrazka" alt="Post 4" className={styles.image}/>
-                                <a href="#" className={styles.link}>Post Format: WordPress Tiled Gallery</a>
-                                <span className={styles.date}>March 28, 2015</span>
-                            </li>
+
+                            {articles.map(article => (
+                                <li key={article.id} className={styles.listItem}>
+                                    <a href="#" className={styles.link}>{article.title}</a>
+                                    <span className={styles.date}>{formatDate(article.created_at)}</span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className={styles.footerSection}>
                         <h4 className={styles.heading}>Categories</h4>
                         <ul className={styles.list}>
-                            <li>Post Formats (16)</li>
-                            <li>Uncategorized (10)</li>
-                            <li>Template (10)</li>
-                            <li>Markup (6)</li>
-                            <li>Edge Case (6)</li>
-                            <li>Slider (3)</li>
-                            <li>Media (2)</li>
-                            <li>Featured (2)</li>
+                            {categories.map(category => (
+                                <li key={category.id} className={styles.listItem}>
+                                    <a href="#" className={styles.link}>{category.title}</a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className={styles.footerSection}>

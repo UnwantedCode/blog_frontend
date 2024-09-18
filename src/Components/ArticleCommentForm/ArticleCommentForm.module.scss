@@ -1,0 +1,68 @@
+.comment{
+  width: 100%;
+
+  font-size: 14px;
+
+
+  .title{
+    color: #DA4453;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .description{
+    color: #6B6B6B;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .form{
+    width: 100%;
+    .label{
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    .textarea{
+      overflow: auto;
+      padding-left: 3px;
+      vertical-align: top;
+      width: 100%;
+      color: #666;
+      border: 1px solid #E8E8E8;
+      border-radius: 3px;
+      font-size: 100%;
+      margin: 0;
+      height: 195px;
+    }
+    .input{
+      padding: 6px;
+      color: #666;
+      border: 1px solid #E8E8E8;
+      border-radius: 3px;
+      width: 250px;
+    }
+    .button {
+      background-color: #DA4453;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 3px;
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: 400;
+      transition-duration: 0.4s;
+
+    }
+    .button:hover{
+      background-color: #000000;
+      cursor: pointer;
+    }
+    .error{
+      color: #DA4453;
+      margin-top: 10px;
+    }
+    .success{
+      color: #4CAF50;
+      margin-top: 10px;
+    }
+  }
+}
