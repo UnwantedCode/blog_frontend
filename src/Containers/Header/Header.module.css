@@ -24,10 +24,24 @@
   margin: 10px 0 10px 0;
   font-size: 20px;
   color: #dadada;
+  transition: 0.3s all;
+}
+.header .headerContainer .headerLeft .homeLink:hover {
+  color: #DA4453;
 }
 .header .headerContainer .headerRight {
   display: flex;
   align-items: flex-start;
+}
+.header .headerContainer .headerRight .headerLink {
+  padding: 15px;
+  margin: 10px 0 10px 0;
+  font-size: 15px;
+  color: #dadada;
+  transition: 0.3s all;
+}
+.header .headerContainer .headerRight .headerLink:hover {
+  color: #DA4453;
 }
 
 /*# sourceMappingURL=Header.module.css.map */

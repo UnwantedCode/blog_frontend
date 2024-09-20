@@ -2,7 +2,7 @@
 
 import styles from './Footer.module.css'
 import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 function Footer() {
     const [categories, setCategories] = useState([]);
@@ -37,7 +37,7 @@ function Footer() {
             <footer className={styles.footer}>
                 <div className={styles.mainFooter}>
                     <div className={styles.footerSection}>
-                        <h4 className={styles.heading}>Popular Posts</h4>
+                        <h4 className={styles.heading}>Popularne wpisy</h4>
                         <ul className={styles.list}>
 
                             {articles.map(article => (
@@ -49,7 +49,7 @@ function Footer() {
                         </ul>
                     </div>
                     <div className={styles.footerSection}>
-                        <h4 className={styles.heading}>Categories</h4>
+                        <h4 className={styles.heading}>Kategorie</h4>
                         <ul className={styles.list}>
                             {categories.map(category => (
                                 <li key={category.id} className={styles.listItem}>
@@ -59,13 +59,8 @@ function Footer() {
                         </ul>
                     </div>
                     <div className={styles.footerSection}>
-                        <h4 className={styles.heading}>Colorlib Logo</h4>
-                        <p>Awesome and completely free WordPress WooCommerce themes to take your ecommerce website to
-                            the
-                            next level.</p>
-                        <p>If you are having problems with theme setup, please feel free to use Colorlib <a href="#"
-                                                                                                            className={styles.link}>support
-                            forum</a>.</p>
+                        <h4 className={styles.heading}>Cel projektu</h4>
+                        <p>Projekt został stworzony na potrzeby przedmiotu "Technologie aplikacji internetowych"</p>
                     </div>
                 </div>
 
@@ -78,15 +73,12 @@ function Footer() {
                     <a href="#"><i className="fab fa-github"></i></a>
                 </div>*/}
                 <div className={styles.footerNav}>
-                    <a href="#">Home</a>
-                    <a href="#">Full-Width Page</a>
-                    <a href="#">Sample Page</a>
-                    <a href="#">Languages</a>
-                    <a href="#">Contact Us</a>
+                    <Link to="/" className={styles.navLink}>Strona główna</Link>
+                    <Link to="/o-mnie" className={styles.navLink}>O mnie</Link>
+                    <Link to="/kontakt" className={styles.navLink}>Kontakt</Link>
                 </div>
                 <div className={styles.footerCredits}>
-                    <span>Sparkling All rights reserved. Theme by <a href="#">Colorlib</a> Powered by <a
-                        href="#">WordPress</a></span>
+                    <span>Copyright AdamT {(new Date().getFullYear())}</span>
                 </div>
             </div>
         </div>

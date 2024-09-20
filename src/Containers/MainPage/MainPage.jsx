@@ -3,7 +3,7 @@ import styles from './MainPage.module.css';
 import ArticleItem from "../../Components/ArticleItem/ArticleItem.jsx";
 import RightPanel from "../../Components/RightPanel/RightPanel.jsx";
 import MainPageSlider from "../../Components/MainPageSlider/MainPageSlider.jsx";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useParams, useSearchParams} from "react-router-dom";
 import ArticlesPagination from "../../Components/ArticlesPagination/ArticlesPagination.jsx";
 
@@ -15,11 +15,12 @@ function MainPage() {
     const [loading, setLoading] = useState(true);
     const [totalPages, setTotalPages] = useState(1);   // Dodajemy stan dla łącznej liczby stron
     const pageSize = 5
-    const currentPage = parseInt(searchParams.get('page')) || 1; // Ustal currentPage na podstawie searchParams
+    const currentPage = parseInt(searchParams.get('strona')) || 1; // Ustal currentPage na podstawie searchParams
+    const articlesRef = useRef(null);
 
     useEffect(() => {
         const query = searchParams.get('q') ? `&search=${searchParams.get('q')}` : '';
-        const category = searchParams.get('category') ? `&categories=${searchParams.get('category')}` : '';
+        const category = searchParams.get('kategoria') ? `&categories=${searchParams.get('kategoria')}` : '';
         const page = `&page=${currentPage}`; // Zmiana, używamy currentPage do ustalenia strony
 
         fetch('http://localhost:8000/api/posts/?page_size='+pageSize+query+category+page)
@@ -45,9 +46,9 @@ function MainPage() {
             {/*<MainPageSlider />*/}
 
             <div className={styles.container}>
-                <div className={styles.mainLeft}>
+                <div ref={articlesRef} className={styles.mainLeft}>
                     {loading ? ( // Wyświetl wiadomość ładowania podczas fetch
-                        <p>Loading articles...</p>
+                     <></>
                     ) : (
                         <>
                             {articles.map(article => (
@@ -65,6 +66,7 @@ function MainPage() {
                                 totalPages={totalPages}
                                 searchParams={searchParams}
                                 setSearchParams={setSearchParams}
+                                articlesRef={articlesRef}
                             />
                         </>
 

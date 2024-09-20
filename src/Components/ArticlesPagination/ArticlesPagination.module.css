@@ -1,3 +1,42 @@
-
+@charset "UTF-8";
+.pagination {
+  display: flex;
+  justify-content: space-between; /* Rozsuwa pierwszy i ostatni przycisk */
+  align-items: center; /* Wyrównuje wszystkie przyciski pionowo na środku */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.pagination .paginationButtonsWrapper {
+  display: flex;
+  justify-content: center; /* Wycentruje środkowe przyciski */
+  flex-grow: 1; /* Pozwoli na elastyczność i rozciąganie */
+}
+.pagination .paginationButton {
+  color: #DA4453;
+  background: #FFF;
+  transition: background 0.3s;
+  border: 1px solid #DADADA;
+  background-color: #FFF;
+  padding: 8px 14px;
+  font-size: 12px;
+  border-radius: 4px;
+  margin: 0 0 1.5em;
+  overflow: hidden;
+}
+.pagination .paginationButton:hover {
+  background: #DA4453;
+  color: #FFF;
+}
+.pagination .paginationButtonFirst {
+  margin-right: auto; /* Przyciąga przycisk do lewej krawędzi */
+}
+.pagination .paginationButtonLast {
+  margin-left: auto; /* Przyciąga przycisk do prawej krawędzi */
+}
+.pagination .activePage {
+  background: #DA4453;
+  color: #FFF;
+}
 
 /*# sourceMappingURL=ArticlesPagination.module.css.map */

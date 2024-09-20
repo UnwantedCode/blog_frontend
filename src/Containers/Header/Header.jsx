@@ -9,11 +9,12 @@ function Header() {
             <header className={styles.header}>
                 <div className={styles.headerContainer}>
                     <div className={styles.headerLeft}>
-                        <a className={styles.homeLink}>Strona głowna</a>
+                        <Link to="/" className={styles.homeLink}>CyberBlog</Link>
                     </div>
 
                     <div className={styles.headerRight}>
-
+                        <Link to="/o-mnie" className={styles.headerLink}>O mnie</Link>
+                        <Link to="/kontakt" className={styles.headerLink}>Kontakt</Link>
                     </div>
 
 

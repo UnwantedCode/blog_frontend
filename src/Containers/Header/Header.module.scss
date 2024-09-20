@@ -22,14 +22,27 @@
                 margin: 10px 0 10px 0;
                 font-size: 20px;
                 color: #dadada;
-
+                transition: 0.3s all;
+                &:hover {
+                    color: #DA4453;
+                }
             }
         }
 
         .headerRight {
             display: flex;
             align-items: flex-start;
+            .headerLink {
+                padding: 15px;
+                margin: 10px 0 10px 0;
+                font-size: 15px;
+                color: #dadada;
+                transition: 0.3s all;
+                &:hover {
+                    color: #DA4453;
+                }
 
+            }
 
 
 

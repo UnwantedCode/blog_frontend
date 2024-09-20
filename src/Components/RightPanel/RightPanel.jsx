@@ -1,6 +1,7 @@
 import styles from './RightPanel.module.css';
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import TipForm from "../TipForm/TipForm.jsx";
 
 //show big image and some text under it
 function RightPanel() {
@@ -58,7 +59,7 @@ function RightPanel() {
                         </div>
                         <div className={styles.categories}>
                             {categories.map(category => (
-                                <a key={category.id} className={styles.link} href={`/?category=${category.id}`}>
+                                <a key={category.id} className={styles.link} href={`/?kategoria=${category.id}`}>
                                     <div className={styles.category} key={category.id}>
                                         {category.title}
                                     </div>
@@ -77,7 +78,12 @@ function RightPanel() {
 
                                 </div>
                                 </div>
-                                </div>
+
+
+                    <TipForm />
+
+                </div>
+
 
 
         </>
