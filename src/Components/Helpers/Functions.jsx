@@ -1,3 +1,5 @@
+import {Helmet} from "react-helmet-async";
+
 export const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const dateObj = new Date(dateString);
@@ -12,4 +14,19 @@ export const commentFormater = (comment) => {
         return `${comment} komentarze`;
     }
     return `${comment} komentarzy`;
+}
+export const stripHtml = (string) => {
+    let div = document.createElement("div");
+    div.innerHTML = string
+    string = div.innerText
+    string = string.replace(/\s+/g,' ').trim().substring(0, 500);
+    return string
+}
+
+export const changeHelmetTitle = (title) => {
+    return(
+    <Helmet>
+        <title>{title} - CyberBlog</title>
+    </Helmet>
+    )
 }

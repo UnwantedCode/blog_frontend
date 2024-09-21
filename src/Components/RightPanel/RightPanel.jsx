@@ -1,11 +1,13 @@
 import styles from './RightPanel.module.css';
 import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import TipForm from "../TipForm/TipForm.jsx";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
+import {useScrollToTop} from "../Context/Context.jsx";
 
 
 function RightPanel() {
+    const {scrollToTop} = useScrollToTop();
 
     const [categories, setCategories] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
@@ -33,6 +35,7 @@ function RightPanel() {
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
             handleSearch();
+            scrollToTop();
         }
     };
 
@@ -60,11 +63,11 @@ function RightPanel() {
                         </div>
                         <div className={styles.categories}>
                             {categories.map(category => (
-                                <a key={category.id} className={styles.link} href={`/?kategoria=${category.id}`}>
+                                <Link to={`/?kategoria=${category.id}-${category.slug}`} key={category.id} className={styles.link} onClick={scrollToTop}>
                                     <div className={styles.category} key={category.id}>
                                         {category.title}
                                     </div>
-                                </a>
+                                </Link>
                             ))}
                                 {/*    <a className={styles.link} href="/some-path">*/}
                                 {/*        <div className={styles.category}>Kategoria 1</div>*/}

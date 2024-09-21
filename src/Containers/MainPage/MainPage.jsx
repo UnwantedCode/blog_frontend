@@ -7,6 +7,8 @@ import {useEffect, useRef, useState} from "react";
 import {useParams, useSearchParams} from "react-router-dom";
 import ArticlesPagination from "../../Components/ArticlesPagination/ArticlesPagination.jsx";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
+import {changeHelmetTitle} from "../../Components/Helpers/Functions.jsx";
+import {useScrollToTop} from "../../Components/Context/Context.jsx";
 
 
 function MainPage() {
@@ -17,11 +19,10 @@ function MainPage() {
     const [totalPages, setTotalPages] = useState(1);
     const pageSize = 5
     const currentPage = parseInt(searchParams.get('strona')) || 1;
-    const articlesRef = useRef(null);
-
+    const { articlesRef, scrollToTop } = useScrollToTop();
     useEffect(() => {
         const query = searchParams.get('q') ? `&search=${searchParams.get('q')}` : '';
-        const category = searchParams.get('kategoria') ? `&categories=${searchParams.get('kategoria')}` : '';
+        const category = searchParams.get('kategoria') ? `&categories=${parseInt(searchParams.get('kategoria'))}` : '';
         const page = `&page=${currentPage}`;
 
         fetch(`${ApiUrls.mainUrl}posts/?page_size=`+pageSize+query+category+page)
@@ -41,8 +42,9 @@ function MainPage() {
 
     return (
         <>
+            {changeHelmetTitle('Strona główna')}
             <Helmet>
-                <title>Strona glówna</title>
+                <meta name={"description"} content={"Najnowsze artykuły na temat IT"}/>
             </Helmet>
             {/*<MainPageSlider />*/}
 
@@ -62,13 +64,19 @@ function MainPage() {
                                     </>
                                 )
                             )}
-                            <ArticlesPagination
-                                currentPage={currentPage}
-                                totalPages={totalPages}
-                                searchParams={searchParams}
-                                setSearchParams={setSearchParams}
-                                articlesRef={articlesRef}
-                            />
+                            {(articles.length !== 0 )? (
+                                <ArticlesPagination
+                                    currentPage={currentPage}
+                                    totalPages={totalPages}
+                                    searchParams={searchParams}
+                                    setSearchParams={setSearchParams}
+                                />
+                            ) : (
+                                <div className={styles.noArticles}>
+                                    Brak artykułów spełniających kryteria wyszukiwania
+                                </div>
+                            )}
+
                         </>
 
 

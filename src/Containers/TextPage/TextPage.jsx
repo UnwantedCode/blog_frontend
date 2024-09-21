@@ -3,6 +3,7 @@ import styles from './TextPage.module.css';
 import RightPanel from "../../Components/RightPanel/RightPanel.jsx";
 import {useEffect, useState} from "react";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
+import {changeHelmetTitle, stripHtml} from "../../Components/Helpers/Functions.jsx";
 
 
 function TextPage({id}) {
@@ -26,15 +27,17 @@ function TextPage({id}) {
 
     return (
         <>
-            <Helmet>
-                <title>Strona glówna</title>
-            </Helmet>
+
             <div className={styles.container}>
                 <div className={styles.mainLeft}>
                     {loading ? (
                         <></>
                     ) : (
                         <>
+                            {changeHelmetTitle(data.title)}
+                            <Helmet>
+                                <meta name={"description"} content={stripHtml(data.content)}/>
+                            </Helmet>
                             <h1 className={styles.title}>{data.title}</h1>
                             <div className={styles.content} dangerouslySetInnerHTML={{__html: data.content}}/>
                         </>

@@ -7,6 +7,7 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ArticleCommentForm from "../../Components/ArticleCommentForm/ArticleCommentForm.jsx";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
+import {changeHelmetTitle, stripHtml} from "../../Components/Helpers/Functions.jsx";
 
 
 function Article() {
@@ -47,19 +48,23 @@ function Article() {
 
     return (
         <>
-            <Helmet>
-                <title>Strona glówna</title>
-            </Helmet>
             <div className={styles.container}>
                 <div className={styles.mainLeft}>
                     {loading ? (
                             <></>
                         ) : (
                             <>
-                        <ArticleItem
-                        key={article.id}
-                        item={article}
-                    />
+                                {changeHelmetTitle(article.title)}
+                                <Helmet>
+                                    <meta name={"description"}
+                                          content={stripHtml(article.summary)}/>
+
+                                </Helmet>
+
+                                <ArticleItem
+                                    key={article.id}
+                                    item={article}
+                                />
                         {comments.map(comment => (
                             <ArticleComment
                                 key={comment.id}

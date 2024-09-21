@@ -5,10 +5,12 @@ import {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 import {formatDate} from "../../Components/Helpers/Functions.jsx";
+import {useScrollToTop} from "../../Components/Context/Context.jsx";
 
 function Footer() {
     const [categories, setCategories] = useState([]);
     const [articles, setArticles] = useState([]);
+    const {scrollToTop} = useScrollToTop();
 
     useEffect(() => {
         fetch(`${ApiUrls.mainUrl}categories/`)
@@ -40,7 +42,9 @@ function Footer() {
 
                             {articles.map(article => (
                                 <li key={article.id} className={styles.listItem}>
-                                    <a href="#" className={styles.link}>{article.title}</a>
+                                    <Link to={`/artykul/${article.id}-${article.slug}`} className={styles.link}>
+                                            {article.title}
+                                    </Link>
                                     <span className={styles.date}>{formatDate(article.created_at)}</span>
                                 </li>
                             ))}
@@ -51,7 +55,7 @@ function Footer() {
                         <ul className={styles.list}>
                             {categories.map(category => (
                                 <li key={category.id} className={styles.listItem}>
-                                    <a href="#" className={styles.link}>{category.title}</a>
+                                    <Link to={`/?kategoria=${category.id}-${category.slug}`} className={styles.link} onClick={scrollToTop}>{category.title}</Link>
                                 </li>
                             ))}
                         </ul>

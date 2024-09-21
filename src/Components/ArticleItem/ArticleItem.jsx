@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faComment,faCalendar} from "@fortawesome/free-solid-svg-icons";
 import RightPanel from "../RightPanel/RightPanel.jsx";
 import {commentFormater, formatDate} from "../Helpers/Functions.jsx";
+import {Link} from "react-router-dom";
 
 function ArticleItem({item}) {
 
@@ -13,11 +14,11 @@ function ArticleItem({item}) {
                 <div className={styles.image}
                      style={{backgroundImage: `url("${item.image}")`}}/>
                 <div className={styles.content}>
-                    <a href={`/artykul/${item.id}`} className={styles.link}>
+                    <Link to={`/artykul/${item.id}-${item.slug}`} className={styles.link}>
                         <div className={styles.title}>
                             <h1>{item.title}</h1>
                         </div>
-                    </a>
+                    </Link>
                     <div className={styles.info}>
                         <FontAwesomeIcon icon={faCalendar} className={styles.icon}/>
                         <div className={styles.date}>

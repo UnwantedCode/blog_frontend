@@ -1,32 +1,9 @@
 import styles from "../../Components/ArticlesPagination/ArticlesPagination.module.css";
+import {useScrollToTop} from "../Context/Context.jsx";
 
-function ArticlesPagination({currentPage,totalPages,searchParams,setSearchParams, articlesRef   }) {
+function ArticlesPagination({currentPage,totalPages,searchParams,setSearchParams   }) {
 
-    const smoothScroll = (targetY, duration) => {
-        const startY = window.pageYOffset;
-        const difference = targetY - startY;
-        let startTime = null;
-
-        const scroll = (currentTime) => {
-            if (startTime === null) startTime = currentTime;
-            const timeElapsed = currentTime - startTime;
-            const progress = Math.min(timeElapsed / duration, 1);
-            window.scrollTo(0, startY + difference * progress);
-            if (timeElapsed < duration) {
-                requestAnimationFrame(scroll);
-            }
-        };
-
-        requestAnimationFrame(scroll);
-    };
-
-
-    const scrollToTop = () => {
-        if (articlesRef.current) {
-            const topOffset = articlesRef.current.offsetTop;
-            smoothScroll(topOffset, 700);
-        }
-    };
+    const {scrollToTop} = useScrollToTop();
     const handleNextPage = () => {
         if (currentPage < totalPages) {
             setSearchParams({...Object.fromEntries(searchParams), strona: currentPage + 1});
