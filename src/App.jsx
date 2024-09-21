@@ -12,12 +12,8 @@ const Article = React.lazy(() => import('./Containers/Article/Article.jsx'));
 const TextPage = React.lazy(() => import('./Containers/TextPage/TextPage.jsx'));
 
 function App() {
-    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
     return (
         <Suspense fallback={<Loader/>}>
-            {/*{React.lazy(() => delay(3000000).then(console.log('Loading...')))}*/}
-
             <HelmetProvider>
                 <Router>
 

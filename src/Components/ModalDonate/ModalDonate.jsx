@@ -19,14 +19,14 @@ function DonateModal() {
     const [showModal, setShowModal] = useState(false);
     const [searchParams] = useSearchParams();
 
-    // Sprawdzanie, czy parametr 'donate=success' istnieje w URL
+
     useEffect(() => {
         if (searchParams.get('donate') === 'success') {
             setShowModal(true);
         }
     }, [searchParams]);
 
-    // Funkcja do zamykania modalu
+
     const handleCloseModal = () => {
         setShowModal(false);
     };

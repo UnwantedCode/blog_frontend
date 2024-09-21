@@ -2,15 +2,10 @@ import styles from './ArticleItem.module.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faComment,faCalendar} from "@fortawesome/free-solid-svg-icons";
 import RightPanel from "../RightPanel/RightPanel.jsx";
-//show big image and some text under it
+import {commentFormater, formatDate} from "../Helpers/Functions.jsx";
+
 function ArticleItem({item}) {
 
-    // Funkcja formatująca datę
-    const formatDate = (dateString) => {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const dateObj = new Date(dateString);
-        return new Intl.DateTimeFormat('pl-PL', options).format(dateObj); // Formatuj datę na podstawie lokalizacji polskiej
-    };
 
     return (
         <>
@@ -30,7 +25,7 @@ function ArticleItem({item}) {
                         </div>
                         <FontAwesomeIcon icon={faComment} className={styles.icon}/>
                         <div className={styles.comments}>
-                            {item.comments_count} komentarze
+                            {commentFormater(item.comments_count)}
                         </div>
                     </div>
                     <div className={styles.text}>

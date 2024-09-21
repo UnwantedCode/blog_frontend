@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import TipForm from "../TipForm/TipForm.jsx";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 
-//show big image and some text under it
+
 function RightPanel() {
 
     const [categories, setCategories] = useState([]);

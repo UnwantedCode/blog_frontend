@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './MainPageSlider.module.css';
-//show big image and some text under it
+
 function MainPageSlider() {
     const settings = {
         dots: true,
@@ -13,7 +13,7 @@ function MainPageSlider() {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        // centerMode: true,
+
     };
 
     return (

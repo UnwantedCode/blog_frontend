@@ -19,7 +19,7 @@ function ArticleCommentForm({articleId, parentId = null }) {
         setError(null);
         setSuccess(false);
 
-        // Sprawdzenie czy wymagane pola są uzupełnione
+
         if (!comment || !name || !email) {
             setError('Proszę wypełnić wszystkie wymagane pola.');
             setLoading(false);
@@ -31,17 +31,17 @@ function ArticleCommentForm({articleId, parentId = null }) {
             return;
         }
 
-        // Dane do wysłania
+
         const commentData = {
-            post: articleId,   // Id artykułu
-            parent: parentId,    // Id rodzica (dla odpowiedzi na komentarz)
-            content: comment,     // Treść komentarza
-            name,        // Nazwa użytkownika
-            email,       // Email użytkownika
+            post: articleId,
+            parent: parentId,
+            content: comment,
+            name,
+            email,
         };
 
         try {
-            // Wysyłanie komentarza do API (zastąp URL adresem swojego API)
+
             const response = await fetch(`${ApiUrls.mainUrl}post-comments/`, {
                 method: 'POST',
                 headers: {
@@ -54,11 +54,12 @@ function ArticleCommentForm({articleId, parentId = null }) {
                 throw new Error('Nie udało się wysłać komentarza.');
             }
 
-            // Jeśli wszystko się udało
+
             setSuccess(true);
             setComment('');
             setName('');
             setEmail('');
+            window.location.reload();
         } catch (err) {
             setError(err.message);
         } finally {

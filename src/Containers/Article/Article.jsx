@@ -8,16 +8,16 @@ import {useEffect, useState} from "react";
 import ArticleCommentForm from "../../Components/ArticleCommentForm/ArticleCommentForm.jsx";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 
-//show big image and some text under it
+
 function Article() {
-    // get article id from url
+
      let {id} = useParams();
      id = parseInt(id);
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [comments, setComments] = useState([]);
     useEffect(() => {
-        // Użyj Promise.all, aby poczekać na oba fetch
+
         const fetchArticle = fetch(`${ApiUrls.mainUrl}posts/${id}/`)
             .then(response => response.json())
             .then(data => {
@@ -36,7 +36,7 @@ function Article() {
                 console.error('Error fetching comments:', error);
             });
 
-        // Gdy oba fetche zostaną zakończone, ustaw loading na false
+
         Promise.all([fetchArticle, fetchComments])
             .finally(() => setLoading(false));
     }, [id]);
@@ -52,8 +52,8 @@ function Article() {
             </Helmet>
             <div className={styles.container}>
                 <div className={styles.mainLeft}>
-                    {loading ? ( // Wyświetl wiadomość ładowania podczas fetch
-                            <p>Loading article...</p>
+                    {loading ? (
+                            <></>
                         ) : (
                             <>
                         <ArticleItem

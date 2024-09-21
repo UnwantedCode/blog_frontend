@@ -1,18 +1,15 @@
-//footer
+
 
 import styles from './Footer.module.css'
 import {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
+import {formatDate} from "../../Components/Helpers/Functions.jsx";
 
 function Footer() {
     const [categories, setCategories] = useState([]);
     const [articles, setArticles] = useState([]);
-    const formatDate = (dateString) => {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const dateObj = new Date(dateString);
-        return new Intl.DateTimeFormat('pl-PL', options).format(dateObj); // Formatuj datę na podstawie lokalizacji polskiej
-    };
+
     useEffect(() => {
         fetch(`${ApiUrls.mainUrl}categories/`)
             .then(response => response.json())

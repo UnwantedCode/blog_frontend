@@ -1,7 +1,7 @@
 import styles from './ArticleMainPage.module.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faComment,faCalendar} from "@fortawesome/free-solid-svg-icons";
-//show big image and some text under it
+
 function ArticleMainPage() {
 
 

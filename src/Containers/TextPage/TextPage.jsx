@@ -4,7 +4,7 @@ import RightPanel from "../../Components/RightPanel/RightPanel.jsx";
 import {useEffect, useState} from "react";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 
-//show big image and some text under it
+
 function TextPage({id}) {
     console.log(id)
     const [data, setData] = useState(null)

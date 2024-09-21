@@ -8,27 +8,27 @@ import {useParams, useSearchParams} from "react-router-dom";
 import ArticlesPagination from "../../Components/ArticlesPagination/ArticlesPagination.jsx";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 
-//show big image and some text under it
+
 function MainPage() {
-    // get q from url query
+
     const [searchParams, setSearchParams] = useSearchParams();
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [totalPages, setTotalPages] = useState(1);   // Dodajemy stan dla łącznej liczby stron
+    const [totalPages, setTotalPages] = useState(1);
     const pageSize = 5
-    const currentPage = parseInt(searchParams.get('strona')) || 1; // Ustal currentPage na podstawie searchParams
+    const currentPage = parseInt(searchParams.get('strona')) || 1;
     const articlesRef = useRef(null);
 
     useEffect(() => {
         const query = searchParams.get('q') ? `&search=${searchParams.get('q')}` : '';
         const category = searchParams.get('kategoria') ? `&categories=${searchParams.get('kategoria')}` : '';
-        const page = `&page=${currentPage}`; // Zmiana, używamy currentPage do ustalenia strony
+        const page = `&page=${currentPage}`;
 
         fetch(`${ApiUrls.mainUrl}posts/?page_size=`+pageSize+query+category+page)
             .then(response => response.json())
             .then(data => {
                 setArticles(data.results);
-                setTotalPages(Math.ceil(data.count / pageSize)); // Ustalanie liczby stron na podstawie liczby wyników
+                setTotalPages(Math.ceil(data.count / pageSize));
                 setLoading(false);
             })
             .catch(error => {
@@ -36,7 +36,7 @@ function MainPage() {
                 setLoading(false);
             });
     }, [searchParams, currentPage]);
-    // Funkcje obsługujące nawigację po stronach
+
 
 
     return (
@@ -48,7 +48,7 @@ function MainPage() {
 
             <div className={styles.container}>
                 <div ref={articlesRef} className={styles.mainLeft}>
-                    {loading ? ( // Wyświetl wiadomość ładowania podczas fetch
+                    {loading ? (
                      <></>
                     ) : (
                         <>

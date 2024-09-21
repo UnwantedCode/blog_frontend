@@ -1,7 +1,7 @@
 import styles from "../../Components/ArticlesPagination/ArticlesPagination.module.css";
 
 function ArticlesPagination({currentPage,totalPages,searchParams,setSearchParams, articlesRef   }) {
-    // Funkcja do przewijania w określonym czasie
+
     const smoothScroll = (targetY, duration) => {
         const startY = window.pageYOffset;
         const difference = targetY - startY;
@@ -10,7 +10,7 @@ function ArticlesPagination({currentPage,totalPages,searchParams,setSearchParams
         const scroll = (currentTime) => {
             if (startTime === null) startTime = currentTime;
             const timeElapsed = currentTime - startTime;
-            const progress = Math.min(timeElapsed / duration, 1); // Od 0 do 1
+            const progress = Math.min(timeElapsed / duration, 1);
             window.scrollTo(0, startY + difference * progress);
             if (timeElapsed < duration) {
                 requestAnimationFrame(scroll);
@@ -20,30 +20,30 @@ function ArticlesPagination({currentPage,totalPages,searchParams,setSearchParams
         requestAnimationFrame(scroll);
     };
 
-    // Funkcja do przewijania do góry (do pierwszego artykułu)
+
     const scrollToTop = () => {
         if (articlesRef.current) {
             const topOffset = articlesRef.current.offsetTop;
-            smoothScroll(topOffset, 700); // Przewijanie w 500ms
+            smoothScroll(topOffset, 700);
         }
     };
     const handleNextPage = () => {
         if (currentPage < totalPages) {
             setSearchParams({...Object.fromEntries(searchParams), strona: currentPage + 1});
-            scrollToTop(); // Przewiń do góry po zmianie strony
+            scrollToTop();
         }
     };
 
     const handlePrevPage = () => {
         if (currentPage > 1) {
             setSearchParams({...Object.fromEntries(searchParams), strona: currentPage - 1});
-            scrollToTop(); // Przewiń do góry po zmianie strony
+            scrollToTop();
         }
     };
 
     const handlePageClick = (strona) => {
         setSearchParams({...Object.fromEntries(searchParams), strona});
-        scrollToTop(); // Przewiń do góry po zmianie strony
+        scrollToTop();
 
     };
 
