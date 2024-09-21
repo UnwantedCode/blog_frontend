@@ -1,24 +1,53 @@
-.item {
+.commentWrapper {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.commentWrapper .item {
   width: 100%;
   background-color: #FFFFFF;
   padding: 30px;
   border: 1px solid #dadada;
   border-radius: 4px;
 }
-.item .name {
+.commentWrapper .item .name {
   color: #DA4453;
   font-size: 12px;
   font-weight: 700;
 }
-.item .date {
+.commentWrapper .item .date {
   color: #DA4453;
   font-size: 11px;
   font-weight: 700;
 }
-.item .text {
+.commentWrapper .item .text {
   margin-top: 10px;
   line-height: 1.7;
   font-size: 14px;
+}
+.commentWrapper .item .addCommentWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.commentWrapper .item .addCommentWrapper .button {
+  background-color: #C1C0C0;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 3px;
+  padding: 6px 12px;
+  width: 20%;
+  min-width: 100px;
+  max-width: 200px;
+  font-size: 14px;
+  font-weight: 400;
+  transition-duration: 0.4s;
+}
+.commentWrapper .item .addCommentWrapper .button:hover {
+  background-color: #363636;
+  cursor: pointer;
+}
+.commentWrapper .childComments {
+  padding-left: 40px;
+  border-left: 1px solid #DADADA;
 }
 
 /*# sourceMappingURL=ArticleComment.module.css.map */

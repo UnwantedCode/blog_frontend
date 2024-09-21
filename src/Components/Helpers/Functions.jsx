@@ -30,3 +30,23 @@ export const changeHelmetTitle = (title) => {
     </Helmet>
     )
 }
+
+export const buildTreeData = (items, parentFieldName) => {
+    const map = {}; // Mapowanie komentarzy
+    const roots = [];
+
+    items.forEach(item => {
+        item.children = [];
+        map[item.id] = item;
+    });
+
+    items.forEach(item => {
+        if (item[parentFieldName]) {
+            map[item[parentFieldName]].children.push(item);
+        } else {
+            roots.push(item);
+        }
+    });
+
+    return roots;
+};

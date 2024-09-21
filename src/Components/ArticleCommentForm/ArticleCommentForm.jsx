@@ -1,7 +1,7 @@
 import styles from './ArticleCommentForm.module.css';
 import { useState } from 'react';
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
-function ArticleCommentForm({articleId, parentId = null }) {
+function ArticleCommentForm({articleId, parentId = null, onCommentAdded }) {
 
     const [comment, setComment] = useState('');
     const [name, setName] = useState('');
@@ -59,8 +59,9 @@ function ArticleCommentForm({articleId, parentId = null }) {
             setComment('');
             setName('');
             setEmail('');
-            window.location.reload();
-        } catch (err) {
+            if (onCommentAdded) {
+                onCommentAdded(); // Informujemy komponent nadrzędny o dodaniu komentarza
+            }        } catch (err) {
             setError(err.message);
         } finally {
             setLoading(false);

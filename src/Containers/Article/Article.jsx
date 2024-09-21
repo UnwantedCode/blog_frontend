@@ -2,12 +2,12 @@ import {Helmet} from "react-helmet-async";
 import styles from './Article.module.css';
 import ArticleItem from "../../Components/ArticleItem/ArticleItem.jsx";
 import RightPanel from "../../Components/RightPanel/RightPanel.jsx";
-import ArticleComment from "../../Components/ArticleComment/ArticleComment.jsx";
+import ArticleComment, {renderComments} from "../../Components/ArticleComment/ArticleComment.jsx";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ArticleCommentForm from "../../Components/ArticleCommentForm/ArticleCommentForm.jsx";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
-import {changeHelmetTitle, stripHtml} from "../../Components/Helpers/Functions.jsx";
+import {buildTreeData, changeHelmetTitle, stripHtml} from "../../Components/Helpers/Functions.jsx";
 
 
 function Article() {
@@ -17,8 +17,9 @@ function Article() {
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [comments, setComments] = useState([]);
-    useEffect(() => {
 
+    const fetchArticleAndComments = async () => {
+        setLoading(true);
         const fetchArticle = fetch(`${ApiUrls.mainUrl}posts/${id}/`)
             .then(response => response.json())
             .then(data => {
@@ -31,7 +32,8 @@ function Article() {
         const fetchComments = fetch(`${ApiUrls.mainUrl}post-comments/?post=${id}`)
             .then(response => response.json())
             .then(data => {
-                setComments(data);
+                const commentTree = buildTreeData(data, 'parent'); // Budujemy drzewo komentarzy
+                setComments(commentTree);
             })
             .catch(error => {
                 console.error('Error fetching comments:', error);
@@ -40,6 +42,11 @@ function Article() {
 
         Promise.all([fetchArticle, fetchComments])
             .finally(() => setLoading(false));
+    }
+
+    useEffect(() => {
+        fetchArticleAndComments();
+
     }, [id]);
 
 
@@ -65,13 +72,15 @@ function Article() {
                                     key={article.id}
                                     item={article}
                                 />
-                        {comments.map(comment => (
-                            <ArticleComment
-                                key={comment.id}
-                                item={comment}
-                            />
-                        ))}
-                        <ArticleCommentForm articleId={article.id} />
+                        {/*{comments.map(comment => (*/}
+                        {/*    <ArticleComment*/}
+                        {/*        key={comment.id}*/}
+                        {/*        item={comment}*/}
+                        {/*        articleId={article.id}*/}
+                        {/*    />*/}
+                        {/*))}*/}
+                                {renderComments(comments, article.id)}
+                        <ArticleCommentForm articleId={article.id} onCommentAdded={fetchArticleAndComments}  />
                             </>
                     )
                     }
@@ -82,9 +91,6 @@ function Article() {
                 </div>
                 <RightPanel/>
             </div>
-
-
-            {/*<MainPageSlider />*/}
         </>
     );
 }
