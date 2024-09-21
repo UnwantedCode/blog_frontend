@@ -6,6 +6,7 @@ import ArticleComment from "../../Components/ArticleComment/ArticleComment.jsx";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ArticleCommentForm from "../../Components/ArticleCommentForm/ArticleCommentForm.jsx";
+import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 
 //show big image and some text under it
 function Article() {
@@ -17,7 +18,7 @@ function Article() {
     const [comments, setComments] = useState([]);
     useEffect(() => {
         // Użyj Promise.all, aby poczekać na oba fetch
-        const fetchArticle = fetch(`http://localhost:8000/api/posts/${id}/`)
+        const fetchArticle = fetch(`${ApiUrls.mainUrl}posts/${id}/`)
             .then(response => response.json())
             .then(data => {
                 setArticle(data);
@@ -26,7 +27,7 @@ function Article() {
                 console.error('Error fetching article:', error);
             });
 
-        const fetchComments = fetch(`http://localhost:8000/api/post-comments/?post=${id}`)
+        const fetchComments = fetch(`${ApiUrls.mainUrl}post-comments/?post=${id}`)
             .then(response => response.json())
             .then(data => {
                 setComments(data);

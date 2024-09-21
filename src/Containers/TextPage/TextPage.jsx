@@ -2,6 +2,7 @@ import {Helmet} from "react-helmet-async";
 import styles from './TextPage.module.css';
 import RightPanel from "../../Components/RightPanel/RightPanel.jsx";
 import {useEffect, useState} from "react";
+import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 
 //show big image and some text under it
 function TextPage({id}) {
@@ -10,7 +11,7 @@ function TextPage({id}) {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     useEffect(() => {
-        fetch(`http://localhost:8000/api/text-pages/${id}/`)
+        fetch(`${ApiUrls.mainUrl}text-pages/${id}/`)
             .then(response => response.json())
             .then(data => {
                 setData(data)

@@ -6,6 +6,7 @@ import MainPageSlider from "../../Components/MainPageSlider/MainPageSlider.jsx";
 import {useEffect, useRef, useState} from "react";
 import {useParams, useSearchParams} from "react-router-dom";
 import ArticlesPagination from "../../Components/ArticlesPagination/ArticlesPagination.jsx";
+import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 
 //show big image and some text under it
 function MainPage() {
@@ -23,7 +24,7 @@ function MainPage() {
         const category = searchParams.get('kategoria') ? `&categories=${searchParams.get('kategoria')}` : '';
         const page = `&page=${currentPage}`; // Zmiana, używamy currentPage do ustalenia strony
 
-        fetch('http://localhost:8000/api/posts/?page_size='+pageSize+query+category+page)
+        fetch(`${ApiUrls.mainUrl}posts/?page_size=`+pageSize+query+category+page)
             .then(response => response.json())
             .then(data => {
                 setArticles(data.results);

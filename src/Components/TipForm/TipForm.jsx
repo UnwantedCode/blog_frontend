@@ -3,6 +3,7 @@ import styles from './TipForm.module.css';
 import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBeer} from "@fortawesome/free-solid-svg-icons/faBeer";
+import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 
 function TipForm() {
     const handleTipSubmit = async (e) => {
@@ -13,7 +14,7 @@ function TipForm() {
         };
 
 
-            const response = await fetch('http://localhost:8000/api/create-order/', {
+            const response = await fetch(`${ApiUrls.mainUrl}create-order/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

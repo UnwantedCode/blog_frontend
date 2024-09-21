@@ -3,6 +3,7 @@
 import styles from './Footer.module.css'
 import {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
+import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 
 function Footer() {
     const [categories, setCategories] = useState([]);
@@ -13,7 +14,7 @@ function Footer() {
         return new Intl.DateTimeFormat('pl-PL', options).format(dateObj); // Formatuj datę na podstawie lokalizacji polskiej
     };
     useEffect(() => {
-        fetch('http://localhost:8000/api/categories/')
+        fetch(`${ApiUrls.mainUrl}categories/`)
             .then(response => response.json())
             .then(data => {
                 setCategories(data);
@@ -22,7 +23,7 @@ function Footer() {
                 console.error('Error fetching articles:', error);
             });
 
-        fetch('http://localhost:8000/api/posts/?page_size=4&sort_by_comments=desc')
+        fetch(`${ApiUrls.mainUrl}posts/?page_size=4&sort_by_comments=desc`)
             .then(response => response.json())
             .then(data => {
                 setArticles(data.results);

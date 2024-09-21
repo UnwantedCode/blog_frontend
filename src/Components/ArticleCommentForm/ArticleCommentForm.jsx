@@ -1,5 +1,6 @@
 import styles from './ArticleCommentForm.module.css';
 import { useState } from 'react';
+import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 function ArticleCommentForm({articleId, parentId = null }) {
 
     const [comment, setComment] = useState('');
@@ -41,7 +42,7 @@ function ArticleCommentForm({articleId, parentId = null }) {
 
         try {
             // Wysyłanie komentarza do API (zastąp URL adresem swojego API)
-            const response = await fetch('http://localhost:8000/api/post-comments/', {
+            const response = await fetch(`${ApiUrls.mainUrl}post-comments/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

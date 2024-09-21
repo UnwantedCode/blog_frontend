@@ -2,6 +2,7 @@ import styles from './RightPanel.module.css';
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import TipForm from "../TipForm/TipForm.jsx";
+import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 
 //show big image and some text under it
 function RightPanel() {
@@ -10,7 +11,7 @@ function RightPanel() {
     const [searchQuery, setSearchQuery] = useState('');
     const navigate = useNavigate();
     useEffect(() => {
-        fetch('http://localhost:8000/api/categories/')
+        fetch(`${ApiUrls.mainUrl}categories/`)
             .then(response => response.json())
             .then(data => {
                 setCategories(data);
