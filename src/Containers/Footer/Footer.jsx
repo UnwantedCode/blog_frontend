@@ -1,37 +1,17 @@
 
 
 import styles from './Footer.module.css'
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 import {formatDate} from "../../Components/Helpers/Functions.jsx";
-import {useScrollToTop} from "../../Components/Context/Context.jsx";
+import {useScrollToTop} from "../../Components/Context/ScrollToTopContext.jsx";
+import {CacheContext} from "../../Components/Context/CacheContext.jsx";
 
 function Footer() {
-    const [categories, setCategories] = useState([]);
-    const [articles, setArticles] = useState([]);
+    const { categories, articles } = useContext(CacheContext);
     const {scrollToTop} = useScrollToTop();
 
-    useEffect(() => {
-        fetch(`${ApiUrls.mainUrl}categories/`)
-            .then(response => response.json())
-            .then(data => {
-                setCategories(data);
-            })
-            .catch(error => {
-                console.error('Error fetching articles:', error);
-            });
-
-        fetch(`${ApiUrls.mainUrl}posts/?page_size=4&sort_by_comments=desc`)
-            .then(response => response.json())
-            .then(data => {
-                setArticles(data.results);
-            })
-            .catch(error => {
-                console.error('Error fetching articles:', error);
-            });
-
-    }, []);
     return (
         <div className={styles.footerContainer}>
             <footer className={styles.footer}>

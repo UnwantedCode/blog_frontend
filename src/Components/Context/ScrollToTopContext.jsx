@@ -1,6 +1,6 @@
 import React, { createContext, useRef } from 'react';
 
-const Context = createContext();
+const ScrollToTopContext = createContext();
 
 export const ScrollToTopProvider = ({ children }) => {
     const articlesRef = useRef(null);
@@ -31,13 +31,13 @@ export const ScrollToTopProvider = ({ children }) => {
     };
 
     return (
-        <Context.Provider value={{ articlesRef, scrollToTop }}>
+        <ScrollToTopContext.Provider value={{ articlesRef, scrollToTop }}>
             {children}
-        </Context.Provider>
+        </ScrollToTopContext.Provider>
     );
 };
 
 // Hook do użycia kontekstu w innych komponentach
 export const useScrollToTop = () => {
-    return React.useContext(Context);
+    return React.useContext(ScrollToTopContext);
 };

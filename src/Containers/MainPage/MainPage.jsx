@@ -8,7 +8,7 @@ import {useParams, useSearchParams} from "react-router-dom";
 import ArticlesPagination from "../../Components/ArticlesPagination/ArticlesPagination.jsx";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 import {changeHelmetTitle} from "../../Components/Helpers/Functions.jsx";
-import {useScrollToTop} from "../../Components/Context/Context.jsx";
+import {useScrollToTop} from "../../Components/Context/ScrollToTopContext.jsx";
 
 
 function MainPage() {

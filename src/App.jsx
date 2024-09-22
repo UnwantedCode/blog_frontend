@@ -6,7 +6,8 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import ModalDonate from "./Components/ModalDonate/ModalDonate.jsx";
 import React, {Suspense} from "react";
 import {Loader} from "./Components/Loader/Loader.jsx";
-import {ScrollToTopProvider} from "./Components/Context/Context.jsx";
+import {ScrollToTopProvider} from "./Components/Context/ScrollToTopContext.jsx";
+import {CacheProvider} from "./Components/Context/CacheContext.jsx";
 
 const MainPage = React.lazy(() => import('./Containers/MainPage/MainPage.jsx'));
 const Article = React.lazy(() => import('./Containers/Article/Article.jsx'));
@@ -17,6 +18,7 @@ function App() {
         <Suspense fallback={<Loader/>}>
             <HelmetProvider>
                 <ScrollToTopProvider>
+                    <CacheProvider>
                 <Router>
 
                     <Header/>
@@ -33,6 +35,7 @@ function App() {
                     <Footer/>
 
                 </Router>
+                    </CacheProvider>
                 </ScrollToTopProvider>
             </HelmetProvider>
         </Suspense>

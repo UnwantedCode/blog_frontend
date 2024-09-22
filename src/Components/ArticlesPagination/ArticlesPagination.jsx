@@ -1,5 +1,5 @@
 import styles from "../../Components/ArticlesPagination/ArticlesPagination.module.css";
-import {useScrollToTop} from "../Context/Context.jsx";
+import {useScrollToTop} from "../Context/ScrollToTopContext.jsx";
 
 function ArticlesPagination({currentPage,totalPages,searchParams,setSearchParams   }) {
 

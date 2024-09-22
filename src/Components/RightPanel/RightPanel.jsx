@@ -1,27 +1,19 @@
 import styles from './RightPanel.module.css';
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import TipForm from "../TipForm/TipForm.jsx";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
-import {useScrollToTop} from "../Context/Context.jsx";
+import {useScrollToTop} from "../Context/ScrollToTopContext.jsx";
+import {CacheContext} from "../Context/CacheContext.jsx";
 
 
 function RightPanel() {
     const {scrollToTop} = useScrollToTop();
 
-    const [categories, setCategories] = useState([]);
+    const { categories } = useContext(CacheContext);
     const [searchQuery, setSearchQuery] = useState('');
     const navigate = useNavigate();
-    useEffect(() => {
-        fetch(`${ApiUrls.mainUrl}categories/`)
-            .then(response => response.json())
-            .then(data => {
-                setCategories(data);
-            })
-            .catch(error => {
-                console.error('Error fetching articles:', error);
-            });
-    }, []);
+
     const handleSearch = () => {
         if (searchQuery.trim()) {
             navigate(`/?q=${encodeURIComponent(searchQuery)}`);navigate(0);
