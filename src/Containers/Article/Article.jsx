@@ -3,7 +3,7 @@ import styles from './Article.module.css';
 import ArticleItem from "../../Components/ArticleItem/ArticleItem.jsx";
 import RightPanel from "../../Components/RightPanel/RightPanel.jsx";
 import ArticleComment, {renderComments} from "../../Components/ArticleComment/ArticleComment.jsx";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ArticleCommentForm from "../../Components/ArticleCommentForm/ArticleCommentForm.jsx";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
@@ -17,37 +17,42 @@ function Article() {
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [comments, setComments] = useState([]);
+    const navigate = useNavigate();
 
     const fetchArticleAndComments = async () => {
         setLoading(true);
-        const fetchArticle = fetch(`${ApiUrls.mainUrl}posts/${id}/`)
-            .then(response => response.json())
-            .then(data => {
-                setArticle(data);
-            })
-            .catch(error => {
-                console.error('Error fetching article:', error);
-            });
+        try {
+            // Fetch artykuł
+            const articleResponse = await fetch(`${ApiUrls.mainUrl}posts/${id}/`);
+            const articleData = await articleResponse.json();
+            setArticle(articleData);
 
-        const fetchComments = fetch(`${ApiUrls.mainUrl}post-comments/?post=${id}`)
-            .then(response => response.json())
-            .then(data => {
-                const commentTree = buildTreeData(data, 'parent'); // Budujemy drzewo komentarzy
-                setComments(commentTree);
-            })
-            .catch(error => {
-                console.error('Error fetching comments:', error);
-            });
-
-
-        Promise.all([fetchArticle, fetchComments])
-            .finally(() => setLoading(false));
+            // Fetch komentarze
+            const commentsResponse = await fetch(`${ApiUrls.mainUrl}post-comments/?post=${id}`);
+            const commentsData = await commentsResponse.json();
+            const commentTree = buildTreeData(commentsData, 'parent'); // Budujemy drzewo komentarzy
+            setComments(commentTree);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        } finally {
+            setLoading(false);
+        }
     }
 
     useEffect(() => {
-        fetchArticleAndComments();
-
+        const fetchData = async () => {
+            await fetchArticleAndComments();
+        };
+        fetchData();
     }, [id]);
+
+    useEffect(() => {
+        if (article && article.slug) {
+            if (window.location.pathname !== `/artykul/${id}-${article.slug}`) {
+                navigate(`/artykul/${id}-${article.slug}`);
+            }
+        }
+    }, [article]);
 
 
 
@@ -70,6 +75,7 @@ function Article() {
                                 <ArticleItem
                                     key={article.id}
                                     item={article}
+                                    showConent={true}
                                 />
                                 {renderComments(comments, article.id)}
                         <ArticleCommentForm articleId={article.id} onCommentAdded={fetchArticleAndComments}  />

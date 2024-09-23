@@ -5,7 +5,7 @@ import RightPanel from "../RightPanel/RightPanel.jsx";
 import {commentFormater, formatDate} from "../Helpers/Functions.jsx";
 import {Link} from "react-router-dom";
 
-function ArticleItem({item}) {
+function ArticleItem({item, showConent}) {
 
 
     return (
@@ -30,7 +30,7 @@ function ArticleItem({item}) {
                         </div>
                     </div>
                     <div className={styles.text}>
-                        <p dangerouslySetInnerHTML={{ __html: item.summary }}></p>
+                        <p dangerouslySetInnerHTML={{ __html: showConent ? item.content : item.summary}}></p>
                     </div>
                 </div>
             </div>
