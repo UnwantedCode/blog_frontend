@@ -7,7 +7,7 @@
     height: fit-content;
     padding: 30px;
     .tipForm{
-
+        width: 100%;
 
     .title {
         font-size: 20px;
@@ -20,6 +20,7 @@
         .buttonContainer{
             display: flex;
             justify-content: center;
+           //align-content: center;
 
             .button {
                 background-color: #DA4453;

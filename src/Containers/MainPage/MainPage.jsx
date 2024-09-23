@@ -1,8 +1,6 @@
 import {Helmet} from "react-helmet-async";
 import styles from './MainPage.module.css';
 import ArticleItem from "../../Components/ArticleItem/ArticleItem.jsx";
-import RightPanel from "../../Components/RightPanel/RightPanel.jsx";
-import MainPageSlider from "../../Components/MainPageSlider/MainPageSlider.jsx";
 import {useEffect, useRef, useState} from "react";
 import {useParams, useSearchParams} from "react-router-dom";
 import ArticlesPagination from "../../Components/ArticlesPagination/ArticlesPagination.jsx";
@@ -19,7 +17,6 @@ function MainPage() {
     const [totalPages, setTotalPages] = useState(1);
     const pageSize = 5
     const currentPage = parseInt(searchParams.get('strona')) || 1;
-    const { articlesRef, scrollToTop } = useScrollToTop();
     useEffect(() => {
         const query = searchParams.get('q') ? `&search=${searchParams.get('q')}` : '';
         const category = searchParams.get('kategoria') ? `&categories=${parseInt(searchParams.get('kategoria'))}` : '';
@@ -46,10 +43,6 @@ function MainPage() {
             <Helmet>
                 <meta name={"description"} content={"Najnowsze artykuły na temat IT"}/>
             </Helmet>
-            {/*<MainPageSlider />*/}
-
-            <div className={styles.container}>
-                <div ref={articlesRef} className={styles.mainLeft}>
                     {loading ? (
                      <></>
                     ) : (
@@ -78,14 +71,7 @@ function MainPage() {
                             )}
 
                         </>
-
-
                     )}
-                </div>
-                <RightPanel/>
-            </div>
-
-
         </>
     );
 }

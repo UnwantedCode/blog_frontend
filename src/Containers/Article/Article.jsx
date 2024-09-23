@@ -55,8 +55,7 @@ function Article() {
 
     return (
         <>
-            <div className={styles.container}>
-                <div className={styles.mainLeft}>
+
                     {loading ? (
                             <></>
                         ) : (
@@ -72,25 +71,12 @@ function Article() {
                                     key={article.id}
                                     item={article}
                                 />
-                        {/*{comments.map(comment => (*/}
-                        {/*    <ArticleComment*/}
-                        {/*        key={comment.id}*/}
-                        {/*        item={comment}*/}
-                        {/*        articleId={article.id}*/}
-                        {/*    />*/}
-                        {/*))}*/}
                                 {renderComments(comments, article.id)}
                         <ArticleCommentForm articleId={article.id} onCommentAdded={fetchArticleAndComments}  />
                             </>
                     )
                     }
 
-
-
-
-                </div>
-                <RightPanel/>
-            </div>
         </>
     );
 }

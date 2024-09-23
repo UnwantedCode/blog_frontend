@@ -1,8 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { ApiUrls } from "../../assets/Api/ApiUrls.js";
 
-// Określenie czasu ważności cache (np. 24 godziny)
-const CACHE_EXPIRATION_TIME = 1 * 60 * 60 * 1000;
+const CACHE_EXPIRATION_TIME = 1 * 10 * 60 * 1000; //10 minut
 
 export const CacheContext = createContext();
 

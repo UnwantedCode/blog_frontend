@@ -20,12 +20,12 @@ function ArticleItem({item}) {
                         </div>
                     </Link>
                     <div className={styles.info}>
-                        <FontAwesomeIcon icon={faCalendar} className={styles.icon}/>
                         <div className={styles.date}>
+                            <FontAwesomeIcon icon={faCalendar} className={styles.icon}/>
                             {formatDate(item.published_at)}
                         </div>
-                        <FontAwesomeIcon icon={faComment} className={styles.icon}/>
                         <div className={styles.comments}>
+                            <FontAwesomeIcon icon={faComment} className={styles.icon}/>
                             {commentFormater(item.comments_count)}
                         </div>
                     </div>

@@ -48,12 +48,6 @@ function Footer() {
 
             </footer>
             <div className={styles.bottomFooter}>
-{/*                <div className={styles.socialLinks}>
-                    <a href="#"><i className="fab fa-twitter"></i></a>
-                    <a href="#"><i className="fab fa-facebook-f"></i></a>
-                    <a href="#"><i className="fab fa-google-plus-g"></i></a>
-                    <a href="#"><i className="fab fa-github"></i></a>
-                </div>*/}
                 <div className={styles.footerNav}>
                     <Link to="/" className={styles.navLink}>Strona główna</Link>
                     <Link to="/o-mnie" className={styles.navLink}>O mnie</Link>

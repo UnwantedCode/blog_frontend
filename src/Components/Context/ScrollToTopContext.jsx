@@ -37,7 +37,6 @@ export const ScrollToTopProvider = ({ children }) => {
     );
 };
 
-// Hook do użycia kontekstu w innych komponentach
 export const useScrollToTop = () => {
     return React.useContext(ScrollToTopContext);
 };

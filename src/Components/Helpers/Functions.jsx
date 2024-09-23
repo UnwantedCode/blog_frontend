@@ -32,7 +32,7 @@ export const changeHelmetTitle = (title) => {
 }
 
 export const buildTreeData = (items, parentFieldName) => {
-    const map = {}; // Mapowanie komentarzy
+    const map = {}
     const roots = [];
 
     items.forEach(item => {

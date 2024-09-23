@@ -27,9 +27,6 @@ function TextPage({id}) {
 
     return (
         <>
-
-            <div className={styles.container}>
-                <div className={styles.mainLeft}>
                     {loading ? (
                         <></>
                     ) : (
@@ -38,14 +35,13 @@ function TextPage({id}) {
                             <Helmet>
                                 <meta name={"description"} content={stripHtml(data.content)}/>
                             </Helmet>
+                            <div className={styles.wrapper}>
                             <h1 className={styles.title}>{data.title}</h1>
                             <div className={styles.content} dangerouslySetInnerHTML={{__html: data.content}}/>
+                            </div>
                         </>
                     )}
 
-                </div>
-                <RightPanel/>
-            </div>
 
 
             {/*<MainPageSlider />*/}

@@ -1,4 +1,3 @@
-/* src/components/Footer.module.css */
 .footerContainer{
     background-color: #333;
     display: flex;
@@ -69,14 +68,6 @@
         border-top: 1px solid #444;
         width: 100%;
         padding: 10px 21%;
-        .socialLinks {
-            a {
-            margin: 0 5px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 20px;
-            }
-        }
         .footerNav {
             a {
             margin: 0 10px;
@@ -98,6 +89,29 @@
             }
         }
 
+    }
+
+}
+@media screen and (max-width: 1170px) {
+    .footerContainer {
+        .footer {
+            width: 90%;
+            .mainFooter {
+                flex-direction: column;
+                .footerSection {
+                    margin: 0;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        .bottomFooter {
+            flex-direction: column;
+            padding: 10px 10px;
+
+            .footerNav {
+                margin-bottom: 10px;
+            }
+        }
     }
 
 }

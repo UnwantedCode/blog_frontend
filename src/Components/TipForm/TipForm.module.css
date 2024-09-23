@@ -7,6 +7,9 @@
   height: fit-content;
   padding: 30px;
 }
+.tipFormContainer .tipForm {
+  width: 100%;
+}
 .tipFormContainer .tipForm .title {
   font-size: 20px;
   font-weight: 700;
