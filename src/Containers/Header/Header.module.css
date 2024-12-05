@@ -58,6 +58,7 @@
 .header .headerContainer .headerRight {
   display: flex;
   align-items: flex-start;
+  z-index: 9;
 }
 .header .headerContainer .headerRight .headerLink {
   padding: 15px;

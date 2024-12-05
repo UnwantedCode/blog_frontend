@@ -61,6 +61,7 @@
         .headerRight {
             display: flex;
             align-items: flex-start;
+            z-index: 9;
             .headerLink {
                 padding: 15px;
                 margin: 10px 0 10px 0;
