@@ -13,13 +13,13 @@ function Header() {
             <header className={styles.header}>
                 <div className={styles.headerContainer}>
                     <nav className={styles.headerLeft}>
-                        <Link to="/" className={styles.homeLink}>
+                        <Link to="/" className={styles.homeLink} title="Kliknij, aby przejść do strony">
                             CyberBlog
                         </Link>
                     </nav>
 
                     <nav className={styles.headerRight}>
-                        <Link to="/o-mnie" className={styles.headerLink}>
+                        <Link to="/o-mnie" className={styles.headerLink} title="Kliknij, aby przejść do strony głównej">
                             O mnie
                         </Link>
                         <div
@@ -41,9 +41,12 @@ function Header() {
                                 </ul>
                             )}
                         </div>
-                        <Link to="/kontakt" className={styles.headerLink}>
+                        <Link to="/kontakt" className={styles.headerLink} title="Kliknij, aby przejść do strony">
                             Kontakt
                         </Link>
+                        <a target={"_blank"} href={"http://kapalka.psor24.eu"} className={styles.headerLink} title="Kliknij, aby przejść do strony">
+                            Strona Partnera
+                        </a>
                     </nav>
                 </div>
             </header>

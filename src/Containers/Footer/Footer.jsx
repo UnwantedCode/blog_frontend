@@ -42,7 +42,7 @@ function Footer() {
                     </div>
                     <div className={styles.footerSection}>
                         <h4 className={styles.heading}>Cel projektu</h4>
-                        <p>Projekt został stworzony na potrzeby przedmiotu "Technologie aplikacji internetowych"</p>
+                        <p>Projekt został stworzony na potrzeby przedmiotu "Systemy Webowe"</p>
                     </div>
                 </div>
 

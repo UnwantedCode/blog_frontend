@@ -12,9 +12,15 @@ function ArticleItem({item, showConent}) {
         <>
             <article className={styles.item}>
                 <div className={styles.image}
-                     style={{backgroundImage: `url("${item.image}")`}}/>
+                     style={{backgroundImage: `url("${item.image}")`}}>
+                    <img
+                        src={item.image}
+                        alt={item.title || "Domyślny opis"}
+                        style={{display: "none"}}
+                    />
+                </div>
                 <section className={styles.content}>
-                    <Link to={`/artykul/${item.id}-${item.slug}`} className={styles.link}>
+                    <Link to={`/artykul/${item.id}-${item.slug}`} className={styles.link} title="Kliknij, aby przejść do artykułu">
                         <div className={styles.title}>
                             {showConent ? <h1>{item.title}</h1> : <h2>{item.title}</h2>}
                         </div>
