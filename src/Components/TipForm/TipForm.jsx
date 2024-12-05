@@ -37,7 +37,7 @@ function TipForm() {
     };
 
     return (
-        <div className={styles.tipFormContainer}>
+        <section className={styles.tipFormContainer}>
             {loading && <Loader />}
             <div className={styles.tipForm}>
                 <h2 className={styles.title}>Wspomóż mnie napiwkiem!</h2>
@@ -49,7 +49,7 @@ function TipForm() {
                 </div>
 
             </div>
-        </div>
+        </section>
     );
 }
 

@@ -10,13 +10,13 @@ function ArticleItem({item, showConent}) {
 
     return (
         <>
-            <div className={styles.item}>
+            <article className={styles.item}>
                 <div className={styles.image}
                      style={{backgroundImage: `url("${item.image}")`}}/>
-                <div className={styles.content}>
+                <section className={styles.content}>
                     <Link to={`/artykul/${item.id}-${item.slug}`} className={styles.link}>
                         <div className={styles.title}>
-                            <h1>{item.title}</h1>
+                            {showConent ? <h1>{item.title}</h1> : <h2>{item.title}</h2>}
                         </div>
                     </Link>
                     <div className={styles.info}>
@@ -32,8 +32,8 @@ function ArticleItem({item, showConent}) {
                     <div className={styles.text}>
                         <p dangerouslySetInnerHTML={{ __html: showConent ? item.content : item.summary}}></p>
                     </div>
-                </div>
-            </div>
+                </section>
+            </article>
         </>
     )
         ;

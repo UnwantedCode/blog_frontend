@@ -33,8 +33,8 @@ function RightPanel() {
 
     return (
         <>
-                <div className={styles.mainRight}>
-                    <div className={styles.searchContainter}>
+                <aside className={styles.mainRight}>
+                    <section className={styles.searchContainter}>
                         <div className={styles.title}>
                             Szukaj
                         </div>
@@ -48,8 +48,8 @@ function RightPanel() {
                             />
                             <button className={styles.button} onClick={handleSearch}>SZUKAJ</button>
                         </div>
-                    </div>
-                    <div className={styles.categoryContainer}>
+                    </section>
+                    <section className={styles.categoryContainer}>
                         <div className={styles.title}>
                             Kategorie
                         </div>
@@ -73,12 +73,12 @@ function RightPanel() {
 
 
                                 </div>
-                                </div>
+                                </section>
 
 
                     <TipForm />
 
-                </div>
+                </aside>
 
 
 

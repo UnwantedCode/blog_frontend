@@ -13,11 +13,11 @@ function Footer() {
     const {scrollToTop} = useScrollToTop();
 
     return (
-        <div className={styles.footerContainer}>
-            <footer className={styles.footer}>
+        <footer className={styles.footerContainer}>
+            <section className={styles.footer}>
                 <div className={styles.mainFooter}>
                     <div className={styles.footerSection}>
-                        <h4 className={styles.heading}>Popularne wpisy</h4>
+                        <h3 className={styles.heading}>Popularne wpisy</h3>
                         <ul className={styles.list}>
 
                             {articles.map(article => (
@@ -31,7 +31,7 @@ function Footer() {
                         </ul>
                     </div>
                     <div className={styles.footerSection}>
-                        <h4 className={styles.heading}>Kategorie</h4>
+                        <h3 className={styles.heading}>Kategorie</h3>
                         <ul className={styles.list}>
                             {categories.map(category => (
                                 <li key={category.id} className={styles.listItem}>
@@ -46,8 +46,8 @@ function Footer() {
                     </div>
                 </div>
 
-            </footer>
-            <div className={styles.bottomFooter}>
+            </section>
+            <section className={styles.bottomFooter}>
                 <div className={styles.footerNav}>
                     <Link to="/" className={styles.navLink}>Strona główna</Link>
                     <Link to="/o-mnie" className={styles.navLink}>O mnie</Link>
@@ -56,8 +56,8 @@ function Footer() {
                 <div className={styles.footerCredits}>
                     <span>Copyright AdamT {(new Date().getFullYear())}</span>
                 </div>
-            </div>
-        </div>
+            </section>
+        </footer>
     );
 
 }

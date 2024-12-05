@@ -8,14 +8,14 @@ function Header() {
         <>
             <header className={styles.header}>
                 <div className={styles.headerContainer}>
-                    <div className={styles.headerLeft}>
+                    <nav className={styles.headerLeft}>
                         <Link to="/" className={styles.homeLink}>CyberBlog</Link>
-                    </div>
+                    </nav>
 
-                    <div className={styles.headerRight}>
+                    <nav className={styles.headerRight}>
                         <Link to="/o-mnie" className={styles.headerLink}>O mnie</Link>
                         <Link to="/kontakt" className={styles.headerLink}>Kontakt</Link>
-                    </div>
+                    </nav>
 
 
                 </div>

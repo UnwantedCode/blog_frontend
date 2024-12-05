@@ -27,21 +27,20 @@ function TextPage({id}) {
 
     return (
         <>
-                    {loading ? (
-                        <></>
-                    ) : (
-                        <>
-                            {changeHelmetTitle(data.title)}
-                            <Helmet>
-                                <meta name={"description"} content={stripHtml(data.content)}/>
-                            </Helmet>
-                            <div className={styles.wrapper}>
-                            <h1 className={styles.title}>{data.title}</h1>
-                            <div className={styles.content} dangerouslySetInnerHTML={{__html: data.content}}/>
-                            </div>
-                        </>
-                    )}
-
+            {loading ? (
+                <></>
+            ) : (
+                <>
+                    {changeHelmetTitle(data.title)}
+                    <Helmet>
+                        <meta name={"description"} content={stripHtml(data.content)}/>
+                    </Helmet>
+                    <article className={styles.wrapper}>
+                        <h1 className={styles.title}>{data.title}</h1>
+                        <section className={styles.content} dangerouslySetInnerHTML={{__html: data.content}}/>
+                    </article>
+                </>
+            )}
 
 
             {/*<MainPageSlider />*/}
