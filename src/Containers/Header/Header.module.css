@@ -14,6 +14,32 @@
   width: 1170px;
   justify-content: space-between;
 }
+.header .headerContainer .mobileMenuIcon {
+  display: none;
+  cursor: pointer;
+  z-index: 10;
+}
+.header .headerContainer .mobileMenuIcon svg {
+  padding: 10px;
+  color: white;
+  font-size: 50px;
+}
+.header .headerContainer .mobileMenuIcon .hamburger {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 6px 0;
+  transition: all 0.3s;
+}
+.header .headerContainer .mobileMenuIcon .hamburger.open {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.header .headerContainer .mobileMenuIcon .hamburger:nth-child(2).open {
+  opacity: 0;
+}
+.header .headerContainer .mobileMenuIcon .hamburger:nth-child(3).open {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
 .header .headerContainer .headerLeft {
   display: flex;
   align-items: center;
@@ -45,11 +71,12 @@
 }
 .header .headerContainer .headerRight .dropdown {
   position: relative;
-  display: flex;
-  align-items: center;
 }
 .header .headerContainer .headerRight .dropdown .headerLink {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .header .headerContainer .headerRight .dropdown .dropdownMenu {
   display: none;
@@ -77,8 +104,36 @@
   background-color: #da4453;
   color: #fff;
 }
-.header .headerContainer .headerRight .dropdown:hover .dropdownMenu {
+.header .headerContainer .headerRight .dropdown.dropdownOpen .dropdownMenu {
   display: block;
+}
+@media screen and (max-width: 768px) {
+  .header .headerContainer .mobileMenuIcon {
+    display: block;
+  }
+  .header .headerContainer .headerRight {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #444;
+    height: 100%;
+    width: 250px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  .header .headerContainer .headerRight.menuActive {
+    transform: translateX(0);
+  }
+  .header .headerContainer .headerRight .headerLink {
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+  }
+  .header .headerContainer .headerRight .dropdown .dropdownMenu {
+    position: static;
+    box-shadow: none;
+  }
 }
 
 /*# sourceMappingURL=Header.module.css.map */

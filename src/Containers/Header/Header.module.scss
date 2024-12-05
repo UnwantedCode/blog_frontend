@@ -12,6 +12,35 @@
         display: flex;
         width: 1170px;
         justify-content: space-between;
+        .mobileMenuIcon {
+            display: none;
+            cursor: pointer;
+            z-index: 10;
+            svg {
+                padding: 10px;
+                color: white;
+                font-size: 50px;
+            }
+            .hamburger {
+                width: 30px;
+                height: 3px;
+                background-color: white;
+                margin: 6px 0;
+                transition: all 0.3s;
+
+                &.open {
+                    transform: rotate(45deg) translate(5px, 5px);
+                }
+
+                &:nth-child(2).open {
+                    opacity: 0;
+                }
+
+                &:nth-child(3).open {
+                    transform: rotate(-45deg) translate(5px, -5px);
+                }
+            }
+        }
         .headerLeft {
             display: flex;
             align-items: center;
@@ -45,10 +74,12 @@
             }
             .dropdown {
                 position: relative;
-                display: flex;
-                align-items: center;
+
                 .headerLink {
                     cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                 }
 
                 .dropdownMenu {
@@ -81,11 +112,10 @@
                     }
                 }
 
-                &:hover .dropdownMenu {
+                &.dropdownOpen .dropdownMenu {
                     display: block;
                 }
             }
-
 
 
 
@@ -93,5 +123,42 @@
 
 
 
+    }
+    @media screen and (max-width: 768px) {
+        .headerContainer {
+            .mobileMenuIcon {
+                display: block;
+            }
+
+            .headerRight {
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: 0;
+                background-color: #444;
+                height: 100%;
+                width: 250px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+
+                &.menuActive {
+                    transform: translateX(0);
+                }
+
+                .headerLink {
+                    padding: 20px;
+                    text-align: center;
+                    font-size: 18px;
+                }
+
+
+                .dropdown {
+                    .dropdownMenu {
+                        position: static;
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
     }
 }

@@ -2,12 +2,13 @@ import styles from "./Header.module.css";
 import {Link} from "react-router-dom";
 import {useContext, useState} from "react";
 import {CacheContext} from "../../Components/Context/CacheContext.jsx";
-
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 function Header() {
 
-    const [showDropdown, setShowDropdown] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
     const { categories } = useContext(CacheContext);
-
+    const [menuOpen, setMenuOpen] = useState(false);
     return (
         <>
             <header className={styles.header}>
@@ -17,22 +18,26 @@ function Header() {
                             CyberBlog
                         </Link>
                     </nav>
-
-                    <nav className={styles.headerRight}>
+                    <div className={styles.mobileMenuIcon} onClick={() => setMenuOpen(!menuOpen)}>
+                        <FontAwesomeIcon icon={faBars} />
+                    </div>
+                    <nav className={`${styles.headerRight} ${menuOpen ? styles.menuActive : ""}`}>
                         <Link to="/o-mnie" className={styles.headerLink} title="Kliknij, aby przejść do strony głównej">
                             O mnie
                         </Link>
                         <div
-                            className={styles.dropdown}
-                            onMouseEnter={() => setShowDropdown(true)}
-                            onMouseLeave={() => setShowDropdown(false)}
+                            className={`${styles.dropdown} ${dropdownOpen ? styles.dropdownOpen : ""}`}
+                            onMouseEnter={() => setDropdownOpen(true)}
+
+                            onClick={() => setDropdownOpen(!dropdownOpen)}
+                            onMouseLeave={() => setDropdownOpen(false)}
                         >
                             <span className={styles.headerLink}>Więcej</span>
-                            {showDropdown && (
+                            {dropdownOpen && (
                                 <ul className={styles.dropdownMenu}>
                                     {categories.map(category => (
-                                        <li>
-                                            <Link to={`/?kategoria=${category.id}-${category.slug}`} key={category.id}
+                                        <li key={category.id}>
+                                            <Link to={`/?kategoria=${category.id}-${category.slug}`}
                                                   className={styles.dropdownLink}>
                                                 {category.title}
                                             </Link>
@@ -44,7 +49,8 @@ function Header() {
                         <Link to="/kontakt" className={styles.headerLink} title="Kliknij, aby przejść do strony">
                             Kontakt
                         </Link>
-                        <a target={"_blank"} href={"http://kapalka.psor24.eu"} className={styles.headerLink} title="Kliknij, aby przejść do strony">
+                        <a target={"_blank"} href={"http://kapalka.psor24.eu"} className={styles.headerLink}
+                           title="Kliknij, aby przejść do strony">
                             Strona Partnera
                         </a>
                     </nav>
