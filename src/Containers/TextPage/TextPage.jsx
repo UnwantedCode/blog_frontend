@@ -1,6 +1,5 @@
 import {Helmet} from "react-helmet-async";
 import styles from './TextPage.module.css';
-import RightPanel from "../../Components/RightPanel/RightPanel.jsx";
 import {useEffect, useState} from "react";
 import {ApiUrls} from "../../assets/Api/ApiUrls.js";
 import {changeHelmetTitle, stripHtml} from "../../Components/Helpers/Functions.jsx";
@@ -41,9 +40,6 @@ function TextPage({id}) {
                     </article>
                 </>
             )}
-
-
-            {/*<MainPageSlider />*/}
         </>
     );
 }
